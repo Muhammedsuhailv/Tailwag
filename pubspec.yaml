@@ -1,0 +1,524 @@
+name: mainproject
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  date_picker_timeline: ^1.2.5
+  easy_date_timeline: ^1.0.2
+  curved_labeled_navigation_bar: ^2.0.2
+  flutter_rating_bar: ^4.0.1
+
+
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  firebase_storage: ^11.6.0
+  country_picker: ^2.0.23
+  shimmer: ^3.0.0
+  image_picker: ^1.0.7
+  url_launcher: ^6.2.4
+  date_time_line: ^0.0.3
+  uuid: ^4.3.3
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  carousel_slider: ^4.0.0
+  hexcolor: ^3.0.1
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+     - img/Screenshot 2023-11-02 133643.png
+     - img/Screenshot 2023-11-02 141418.png
+     - img/Screenshot 2023-11-02 141724.png
+     - img/Screenshot 2023-11-02 145605.png
+     - img/Screenshot 2023-11-02 141001.png
+     - img/iPhone 14 Pro - 13.png
+     - img/new.png
+     - img/iPhone 14 Pro - 13 (1).png
+     - img/paw.png
+     - img/Group 139.png
+     - img/Screenshot 2023-11-02 133643.png
+     - img/Group 3.png
+     - img/Splash screen (2).png
+     - img/Splash screen (2)0.png
+     - img/14961829_5518808 1.png
+     - img/14961829_5518808 12.png
+     - img/young-couple-walking-with-dogs-free-vector.jpg
+     - img/young-cartoon-girl-working-in-small-petshop-vector-39551272.jpg
+     - img/18734331_Young cartoon girl working in small petshop 1 (1).png
+     - img/5527355 1.png
+     - img/playful-terrier-pup-with-blue-background-focus-generated-by-ai__2_-removebg-preview 1.png
+     - img/young-couple-walking-with-dogs-free-vector.jpg
+     - img/18734331_Young cartoon girl working in small petshopp3.jpg
+     - img/23591824_grooming_02.jpg
+     - img/30590429_7696083.jpg
+     - img/14961826_5527154.jpg
+     - img/Signup.png
+     - img/feet 6.png
+     - img/feet 1.png
+     - img/feet 2.png
+     - img/feet 3.png
+     - img/feet 4.png
+     - img/feet 5.png
+     - img/Ellipse 8.png
+     - img/0f262171013843bb04861e8e8ac72af7.jpg
+     - img/Banner (1).png
+     - img/AAP_Product-Mockups 1.png
+     - img/Notif.png
+     - img/Notif (1).png
+     - img/Ellipse 20.png
+     - img/Notif.jpg
+     - img/Rectangle 14.png
+     - img/Rectangle 15.png
+     - img/Rectangle 17.png
+     - img/1st-image_4 1.png
+     - img/Image.png
+     - img/Image (1).png
+     - img/72-The-Pet-Shoppe-Shopping-Pet-stores-Visakhapatnam-Andhra-Pradesh.jpg
+     - img/2022-01-24.jpg
+     - img/11627364873059.webp
+     - img/RoyalCaninPuppyMiniWetPuppyFood_1-10kg_-85gpacks 1.png
+     - img/FarminaN_DPumpkinLamb_BlueberryGrainFreeMiniBreedDryPuppyFood-2 1.png
+     - img/cattreatMahiMahi 1.png
+     - img/ApplawsTunainJellyForKittensWetCatFood-70g_fe74e559-db9a-4e6d-ba60-565dada44b98 1.png
+     - img/IMG_2413_2 1.png
+     - img/8906043149084-1 1.png
+     - img/fooodddiiieeee.png
+     - img/fdi.png
+     - img/ood.png
+     - img/Drools_Vegetarian_Adult_Dog_Food 1.png
+     - img/catfood.png
+     - img/dog.png
+     - img/assecdog.png
+     - img/insta.png
+     - img/whatsapp.png
+     - img/facebook.png
+     - img/Vector (2).png
+     - img/download (1).png
+     - img/royal-canin-dog-food-removebg-preview.png
+     - img/drools-removebg-preview.png
+     - img/farmina-lamb-quinoa-digestion-dog-food-removebg-preview.png
+     - img/hufft-removebg-preview.png
+     - img/cat.jpg
+     - img/droolsnon.jpg
+     - img/focus-removebg-preview (1).png
+     - img/digree-removebg-preview.png
+     - img/digree-removebg-preview-removebg-preview.png
+     - img/fidl-removebg-preview.png
+     - img/cat-removebg-preview.png
+     - img/droolsnon-removebg-preview.png
+     - img/page1.png
+     - img/page2.png
+     - img/page3.png
+     - img/page4.png
+     - img/Group 37.png
+     - img/Tailwag.png
+     - img/profile2.jpg
+     - img/profile2-removebg-preview.png
+     - img/images.jpeg
+     - img/sitterfeet.png
+     - img/sitter1.jpg
+     - img/sitter2.jpg
+     - img/settir3.jpg
+     - img/settir4.jpg
+     - img/Rectangle 123.png
+     - img/Rectangle 123 (1).png
+     - img/dog walking.jpg
+     - img/day care.jpg
+     - img/house sitting.jpg
+     - img/Feeding-dog-scaled.jpg
+     - img/wsp-removebg-preview.png
+     - img/fsbk-removebg-preview.png
+     - img/settar11.jpeg
+     - img/settir12.jpeg
+     - img/settir14.jpg
+     - img/settt15.jpg
+     - img/Group 37 (2).png
+     - img/dog shop row.png
+     - img/biscut.png
+     - img/wetfood.png
+     - img/chew.png
+     - img/jerky.png
+     - img/Ellipse 154 (2).png
+     - img/Jounce 1 (7).png
+     - img/royalcanin.png
+     - img/secooooo.png
+     - img/pedigree (1).png
+     - img/PedigreeChickenChunksinGravyWetPuppyFood-70gpacks 1 (1).png
+     - img/close-up-pet-food 2.png
+     - img/iam the trooooooooooooooooooooooooooooooooooooooooooooooo.png
+     - img/strtr img.png
+     - img/Group 36 (2).png
+     - img/hygein1-removebg-preview.png
+     - img/hygiene2-removebg-preview.png
+     - img/hygin7-removebg-preview.png
+     - img/hyge6-removebg-preview.png
+     - img/heygein4-removebg-preview.png
+     - img/heyge5-removebg-preview.png
+     - img/catttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt.jpg
+     - img/cattt.jpg
+     - img/yummy.jpg
+     - img/cat_food1-removebg-preview1.png
+     - img/cat images.png
+     - img/cat-removebg-preview.png
+     - img/cat_food1-removebg-preview.png
+     - img/cat fd.jpg
+     - img/catfood.png
+     - img/cat_food1-removebg-preview1.png
+     - img/[removal.ai]_77c8c3cc-289a-4030-925d-861e5759a7e2-cat-fd.png
+     - img/catwhiskhas.jpg
+     - img/Odlin.png
+     - img/cat biscuits.jpeg
+     - img/cat cream.jpg
+     - img/cat chew stick.jpg
+     - img/cat cherky.png
+     - img/chew s.jpg
+     - img/jerky.jpg
+     - img/cream.jpg
+     - img/dry food.jpg
+     - img/wet cat.jpg
+     - img/skin csre cat.jpg
+     - img/pet shop golden.jpg
+     - img/just dogs.jpeg
+     - img/bow bow.jpg
+     - img/drools cat.jpg
+     - img/nulo_cat_fd-removebg-preview.png
+     - img/cat_fd2-removebg-preview.png
+     - img/pure_cat_fd-removebg-preview.png
+     - img/drools-removebg-preview.png
+     - img/drools_cat-removebg-preview.png
+     - img/cattt fd guys.jpg
+     - img/cat ts gys.jpg
+     - img/cattt_fd_guys-removebg-preview.png
+     - img/cat_ts_gys-removebg-preview.png
+     - img/assecat remove.png
+     - img/biscut.png
+     - img/droools stack.jpg
+     - img/pedigreeeeeeeeeeeeeeeeeeeeeee.jpg
+     - img/royal.png
+     - img/feeeeeeeeett.png
+     - img/bird.jpeg
+     - img/recorddata.png
+     - img/remainder.png
+     - img/maine symbol.png
+     - img/symble.png
+     - img/medicare.png
+     - img/grooming.jpg
+     - img/multivit.jpg
+     - img/tablet1.png
+     - img/prazytox.jpg
+     - img/prazytox-removebg-preview.png
+     - img/tablet1.png
+     - img/tablet2.png
+     - img/tablet3.png
+     - img/tablet4.png
+     - img/tablet5.png
+     - img/medicare.jpg
+     - img/recorddata.jpeg
+     - img/remainter.png
+     - img/groomingggg.jpg
+     - img/maindogs.png
+     - img/maincat.png
+     - img/mainbird.png
+     - img/mainfish.png
+     - img/droools_stack-removebg-preview.png
+     - img/Royal-Caninimgimgg.jpg
+     - img/bird_fd3-removebg-preview.png
+     - img/bird_food_1-removebg-preview.png
+     - img/Article.png
+     - img/noeror.png
+     - img/Seciniot.jpg
+     - img/dogfodymaine.jpg
+     - img/treatsmachaanmaine.jpg
+     - img/healthhyyfine.jpg
+     - img/pet-accessories-.jpg
+     - img/dogfoodimage.jpg
+     - img/pet-shop-flyer-template_23-2148690483.jpg
+     - img/pet-shop-flyer-template_23-2148690483-removebg-preview.png
+     - img/Domel.jpg
+     - img/fusilli-removebg-preview.png
+     - img/fusilli.jpg
+     - img/dog_fddddddddd.png
+     - img/dog_fddddddddd-removebg-preview.png
+     - img/whole__life-removebg-preview.png
+     - img/royal.png
+     - img/Royal-Caninimg-removebg-preview.png
+     - img/maxi_adult-removebg-preview.png
+     - img/toothpaste.jpg
+     - img/sarasbonbroth.jpg
+     - img/healthhhhprobiotic30ml_002_-removebg-preview.png
+     - img/healthhygine71x8cYxjEtL._SX522_-removebg-preview.png
+     - img/health1171ZlhGsDyqL._SX522_-removebg-preview.png
+     - img/health1051WEVpG78lL._SX522_-removebg-preview.png
+     - img/health971N8hiTfIwL._SX679_e-removebg-preview.png
+     - img/hhforbis-pet-shampoo-conditioner-removebg-preview.png
+     - img/helth15Digiton-removebg-preview.png
+     - img/helth16_6350e867414afb7e4b74aa62-amber-naturalz-canine-dt-removebg-preview.png
+     - img/toothpaste-removebg-preview.png
+     - img/heygin18.jpeg
+     - img/heygin18-removebg-preview.png
+     - img/dog_chestt_belt-removebg-preview.png
+     - img/Dog_accssories91jorddqLyL_prev_uiremovebg.png
+     - img/dog-accoeerins_prev_uiremove bg.png
+     - img/Dog-accssories618Z7rlGMeS_prev_uiremove bg.png
+     - img/Dog-acceois Muzzle-Plastic-No8_prev_ui.png
+     - img/acciors pompomil_794xN.1789517004_28m5_prev_ui (1).png
+     - img/accessories_prev_ui (1).png
+     - img/opt-m3911-bla-mesh-muzzle-black_1__92710_prev_ui.png
+     - img/acdogbed71PFTl95CWL._AC_UF1000,1000_QL80_.jpg
+     - img/dog71BQ1R53d1L._AC_UF1000,1000_QL80__prev_ui.png
+     - img/catfoodmaines.jpg
+     - img/cattreatsmainse.jpg
+     - img/cat health hygiene.jpg
+     - img/catAccessoriesmains.jpg
+     - img/wetfood.png
+     - img/wetfood.jpg
+     - img/dry food.jpg
+     - img/dryfood.jpg
+     - img/cateeestraets.jpg
+     - img/catssssssstresssssssst.jpg
+     - img/[removal.ai]_6ef0e50d-b696-4a1e-aa79-1bea41cf176d-catwhis.png
+     - img/dogdryfoodimages.jpg
+     - img/dog-dry.jpg
+     - img/dog-wet.jpg
+     - img/skincare.jpg
+     - img/treats-dog-hilight.jpg
+     - img/dog-biscuits.jpg
+     - img/dog-bis.jpg
+     - img/uuoo.jpg
+     - img/dog-chew-.jpg
+     - img/dogjerkkkkk.jpg
+     - img/dogcherky.jpg
+     - img/dog-food-white-stick.jpg
+     - img/cathelthhygine1-removebg-preview.png
+     - img/catkennilhygiene-removebg-preview.png
+     - img/hip_joint-removebg-preview.png
+     - img/cAT_HELTH_MEDIMADE-removebg-preview.png
+     - img/cat helthisstsssssssssssssss.jpg
+     - img/catshampheltsddfgfjd-removebg-preview.png
+     - img/catpetvitcat-removebg-preview.png
+     - img/catdrpet_prev_ui.png
+     - img/cat_helthbrush-removebg-preview.png
+     - img/cat_helthisstsssssssssssssss-removebg-preview.png
+     - img/birsdoodmainse.jpg
+     - img/bird-treats-bird.jpg
+     - img/bird-health-hygiene.jpg
+     - img/bird accosorisss.jpg
+     - img/birdasscpowaaaaaaaa.jpg
+     - img/bird-accossoroooisss.jpg
+     - img/white bird maines.jpg
+     - img/bird_fd4_drools-removebg-preview.png
+     - img/bird_fd_2-removebg-preview.png
+     - img/bird_fd_5-removebg-preview.png
+     - img/bird_food_1-removebg-preview.png
+     - img/bird_fd_7-removebg-preview.png
+     - img/bird fd 8_prev_ui.png
+     - img/bird fd 9_prev_ui.png
+     - img/bird fd 10_prev_ui.png
+     - img/bird fd 11_prev_ui.png
+     - img/bird-dry-food.jpg
+     - img/bird-wet-food.jpg
+     - img/bird-skin-care.jpg
+     - img/bird-treats.jpg
+     - img/birdfoodshopbybrands.jpg
+     - img/bird-toermmce.jpg
+     - img/adore.jpg
+     - img/perle_prev_ui (1).png
+     - img/prestingge.png
+     - img/birdprofile.jpg
+     - img/bird-biscuits.jpg
+     - img/bird-bis.jpg
+     - img/birddd-bis.jpg
+     - img/birdd-cream.jpg
+     - img/birdd-jer.jpg
+     - img/birdd--wild.jpg
+     - img/birdd--wild_prev_ui.png
+     - img/bluerich_prev_ui.png
+     - img/birdd--wild_prev_ui.png
+     - img/cat-nulo.jpeg
+     - img/catnulo2.jpeg
+     - img/catnulo3.jpeg
+     - img/catnulo4.jpg
+     - img/prein.jpg
+     - img/dogfodymaine.jpg
+     - img/dogmain.jpg
+     - img/ctoy064-removebg-preview.png
+     - img/cataccossories-removebg-preview.png
+     - img/cataccossoriiees5-removebg-preview.png
+     - img/cataccssoriessharck-removebg-preview.png
+     - img/petslife-removebg-preview.png
+     - img/breeds-removebg-preview.png
+     - img/guppyfisgh.jpg
+     - img/catcatcatmaincat-white-background_155003-15387.jpg
+     - img/catcatestcatcatesmain.jpg
+     - img/dogdogestmaine.jpg
+     - img/birdbirdestmaine.jpg
+     - img/fishfishestmain.jpg
+     - img/fishfishhhhhhhhhhhhhhhhhh.jpg
+     - img/parrotrosebackgrond.jpg
+     - img/zdog.jpg
+     - img/gray-kitty-with-monochrome-wall-her_23-2148955131.jpg
+     - img/xgoldfish_1150-7904.jpg
+     - img/xbirdplus-removebg-preview.png
+     - img/xbirdVetSafe_Bird_Cage_Cleaner_and_Disinfectant-removebg-preview.png
+     - img/zzzzzBird-Bath-Bathtub-Bath-Box-Bird-Cleaning-Tool-Cage-Accessories-Parrot-Bath-Transparent-Plastic-Hanging-Tub-1-removebg-preview.png
+     - img/xyzb71aWzq37coL._AC_UF1000,1000_QL80_.jpg
+     - img/zzzzzzzzzzzzzzzzzzzzzzzzz61IF489RQYL._SX522_-removebg-preview.png
+     - img/xMorningVale_-Bird_Spike_Pigeon_Control_Spike-removebg-preview.png
+     - img/zzxBURAQ_Bird_Litter_Spra-removebg-preview.png
+     - img/zzitsfeets.png
+     - img/vitsbird71U1o7jnS._SL1500_.jpg
+     - img/vitsbird71U1o7jnS._SL1500_-removebg-preview.png
+     - img/birdacs1combo-removebg-preview.png
+     - img/birdladder81WqXVvS9vL._AC_UF1000_1000_QL80_-removebg-preview.png
+     - img/bbbirds500x500-hardware-apsbasicsetup-mounting-rev_prev_ui.png
+     - img/birdafricangrey-removebg-preview.png
+     - img/bbirdpagon-removebg-preview.png
+     - img/birdfunleafdd0044a7-23e0-47e9-a8d6-d9875e874ac6.jpg
+     - img/floatingallfood.jpg
+     - img/treatsdomestic-pet-food-composition_23-2148982342.jpg
+     - img/pet-accessories-still-life-concept-set_23-2148949592.jpg
+     - img/xyzb71aWzq37coL._AC_UF1000,1000_QL80_.jpg
+     - img/xyzallfloatpngtree-white-foaming-hand-soap-bottle-on-green-background-with-a-plant-image_2614695.jpg
+     - img/fishfishestmains.jpg
+     - img/fishprofile.jpg
+     - img/mainfood.jpg
+     - img/maintreats.jpg
+     - img/main accssories.jpg
+     - img/mainfooo.jpg
+     - img/guppyfood1.jpg
+     - img/micropellets.jpg
+     - img/guppyfoooo3.jpg
+     - img/guppyfoooo3-removebg-preview.png
+     - img/guppyfoooo3-removebg-preview.png
+     - img/guppyflywood-removebg-preview.png
+     - img/royal-fish.jpg
+     - img/petsrecorddata.jpg
+     - img/mainmedicare.jpg
+     - img/mainmedicare smeda's.jpg
+     - img/main remainder.jpg
+     - img/mainremaindernnnnoooo.jpg
+     - img/main grooming.jpg
+     - img/main recorddatataa.jpg
+     - img/mainremaindernnnnoooo.jpg
+     - img/reeveieoosmainmainmaian.jpg
+     - img/recorddatamain.jpg
+     - img/remaindermain.jpg
+     - img/puppypawpaw.jpg
+     - img/puppypawpaw_prev_ui (1).png
+     - img/dog71cOiJzz-zL._SX522__prev_ui.png
+     - img/petascareeeee_prev_ui.png
+     - img/petstrimmer_prev_ui.png
+     - img/petscare61qbj84hXgL._AC_UF350,350_QL80__prev_ui.png
+     - img/royal-fish-removebg-preview.png
+     - img/fishpro-rich-arowana3-removebg-preview.png
+     - img/fishPredator+Floating4-removebg-preview.png
+     - img/fish0653662a162184f7bd6e1690ec2b0c8e5-removebg-preview.png
+     - img/fishmgqli6-removebg-preview.png
+     - img/FISHRepashY8_prev_ui.png
+     - img/FISHCp-Growth9_prev_ui.png
+     - img/FISH10_prev_ui.png
+     - img/FISH7_prev_ui.png
+     - img/etfood.jpg
+     - img/wetstill-life-pet-food-composition_23-2148982348.jpg
+     - img/skin-care-banner-concept-with-lotion_23-2149449116.jpg
+     - img/skinskinskincute-plants-near-cosmetics-bottles_23-2147787942.jpg
+     - img/FISHHEALTHHYGEIEN3Doct-Dr.-Fungus-Treats-Fungal-Fish-Diseases-30-ML-Pet-Health-Supplements--removebg-preview.png
+     - img/fish251j5XfRwDUS._SY879_-removebg-preview.png
+     - img/Fish3healthUntitled-1-74-removebg-preview.png
+     - img/fish4health61AFseapJNL._SY879_-removebg-preview.png
+     - img/fishaccs81Pupxqy6HL._SX522_-removebg-preview.png
+     - img/fishacsories71oisqhaszL._SX522_-removebg-preview.png
+     - img/fishacs513d72e32b7b73d01535055809343810c-removebg-preview.png
+     - img/fishacs15Square-fish-feeding-ring-and-round-fish-feeding-ring-floating-in-aquarium-with-food-inside_prev_ui.png
+     - img/fishacs123567890456789061lRhXZs1AL._SX522__prev_ui.png
+     - img/page222222222222222222222221].jpg
+     - img/nayahand-drawn-illustration-people-with-pets_23-2148980837.jpg
+     - img/nayapoochapage2young-cartoon-girl-working-small-petshop_74855-19950.jpg
+     - img/nayeepooocha'page3emotional-support-animal-concept-illustration_114360-19462.jpg
+     - img/page4people-playing-with-their-pets_52683-38011.jpg
+     - img/logosignup and login logo logo logo.png
+     - img/logo_brown.png
+     - img/New-Mission-Photo-1.jpg
+     - img/pharmacyyy.jpg
+     - img/propetsproducts.jpg
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+     - family: AbhayaLibre
+       fonts:
+          - asset: fonts/AbhayaLibre-ExtraBold.ttf
+     - family: AbhayaLibre_regular
+       fonts:
+          - asset: fonts/AbhayaLibre-Regular.ttf
+     - family: Katibeh
+       fonts:
+          - asset: fonts/Katibeh-Regular.ttf
+     - family: SofiaPro
+       fonts:
+          - asset: fonts/sofiapro.otf
+            weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
