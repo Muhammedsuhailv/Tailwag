@@ -77,18 +77,29 @@ class _AdminHospitalState extends State<AdminHospital> {
                             child: Row(
                               children: [
                                 Card(elevation: 8,
-                                  child: Container(
+                                  child: // Inside itemBuilder of ListView.separated
+                                  Container(
                                     height: 88,
                                     width: 88,
                                     decoration: BoxDecoration(
-                                        color: Color(0xFF7A5600),
-                                        borderRadius: BorderRadius.circular(8),
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                "img/New-Mission-Photo-1.jpg"))),
+                                      color: Color(0xFF7A5600),
+                                      borderRadius: BorderRadius.circular(8),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:NetworkImage(
+                                          snapshot.data.docs[index]['imageUrl'], // URL from Firestore
+
+                                        )
+
+                                        // : AssetImage("img/New-Mission-Photo-1.jpg"), // Default image if URL is not available
+                                      ),
+                                    ),
                                   ),
+
                                 ),
+
+
+
                                 Padding(
                                   padding: const EdgeInsets.only(left: 13.0),
                                   child: Column(
@@ -117,10 +128,10 @@ class _AdminHospitalState extends State<AdminHospital> {
                                             fontWeight: FontWeight.bold),
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
-                                      Row(
+                                      const Row(
                                         children: [
                                           Icon(
                                             Icons.star,

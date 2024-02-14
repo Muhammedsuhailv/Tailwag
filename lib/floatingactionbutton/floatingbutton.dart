@@ -101,13 +101,13 @@ class _TradeState extends State<Trade> {
               }
             },
           ),
-          actions: [
+          actions: const [
             Icon(
               Icons.notifications_none,
               size: 27,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: EdgeInsets.only(left: 8.0),
               child: Icon(
                 Icons.date_range_rounded,
                 size: 25,
@@ -123,10 +123,10 @@ class _TradeState extends State<Trade> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Container(
+                const SizedBox(
                   height: 45,
                   width: 310,
                   child: CupertinoSearchTextField(
@@ -137,7 +137,7 @@ class _TradeState extends State<Trade> {
                     TextStyle(fontSize: 15, color: Colors.grey),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -151,10 +151,10 @@ class _TradeState extends State<Trade> {
                       children: [
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 4,
                             ),
-                            Text(
+                            const Text(
                               'Claim your\ndiscount 30%\ndaily now!',
                               style: TextStyle(
                                   fontFamily: 'AbhayaLibre_regular',
@@ -171,7 +171,7 @@ class _TradeState extends State<Trade> {
                                       borderRadius: BorderRadius.circular(5),
                                       color: HexColor("7A5600")),
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  child: const Text(
                                     "Shop now",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -182,7 +182,7 @@ class _TradeState extends State<Trade> {
                           ],
                         ),
                         Column(children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 7,
                           ),
                           Padding(
@@ -192,18 +192,18 @@ class _TradeState extends State<Trade> {
                         ]),
                       ],
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 219.0),
+                const Padding(
+                  padding: EdgeInsets.only(right: 219.0),
                   child: Text(
                     "Categories",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,                        fontFamily: 'SofiaPro',
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
@@ -216,14 +216,14 @@ class _TradeState extends State<Trade> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => dogfood(),
+                                    builder: (context) => const dogfood(),
                                   ));
                             },
-                            child: CircleAvatar(
+                            child: const CircleAvatar(
                                 radius: 30,
                                 backgroundColor: Colors.blueGrey,
                                 backgroundImage: AssetImage("img/zdog.jpg"))),
-                        Text(
+                        const Text(
                           "Dog",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )
@@ -235,15 +235,15 @@ class _TradeState extends State<Trade> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => catmain()));
+                                    builder: (context) => const catmain()));
                           },
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 30,
                             backgroundColor: Colors.pinkAccent,
                             backgroundImage:
                                 AssetImage("img/catcatestcatcatesmain.jpg"),
                           )),
-                      Text(
+                      const Text(
                         "Cat",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       )
@@ -255,16 +255,16 @@ class _TradeState extends State<Trade> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => birdmain(),
+                                    builder: (context) => const birdmain(),
                                   ));
                             },
-                            child: CircleAvatar(
+                            child: const CircleAvatar(
                               radius: 30,
                               backgroundColor: Colors.yellow,
                               backgroundImage:
                                   AssetImage("img/parrotrosebackgrond.jpg"),
                             )),
-                        Text(
+                        const Text(
                           "Bird",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )
@@ -277,16 +277,16 @@ class _TradeState extends State<Trade> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => fishmain(),
+                                    builder: (context) => const fishmain(),
                                   ));
                             },
                             child: CircleAvatar(
                               radius: 30,
                               backgroundColor: HexColor("C04D4D"),
                               backgroundImage:
-                                  AssetImage("img/fishfishestmain.jpg"),
+                                  const AssetImage("img/fishfishestmain.jpg"),
                             )),
-                        Text(
+                        const Text(
                           "Fish",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )
@@ -297,10 +297,10 @@ class _TradeState extends State<Trade> {
                 SizedBox(
                   height: 350,
                   child: GridView(
-                      controller: new ScrollController(keepScrollOffset: false),
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(10),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      controller: ScrollController(keepScrollOffset: false),
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(10),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
                       children: [
                         InkWell(
@@ -308,11 +308,11 @@ class _TradeState extends State<Trade> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => food(),
+                                  builder: (context) => const food(),
                                 ));
                           },
                           child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 11, right: 11, top: 26, bottom: 26),
                               child: Container(
                                 height: 90,
@@ -320,7 +320,7 @@ class _TradeState extends State<Trade> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: HexColor("88A18E"),
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                       fit: BoxFit.cover,
                                       image:
                                           AssetImage("img/floatingallfood.jpg"),
@@ -330,6 +330,13 @@ class _TradeState extends State<Trade> {
                                     Positioned(
                                         top: 78,
                                         child: Container(
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                              color: Colors.black26,
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          height: 40,
+                                          width: 147,
                                           child: Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 8.0),
@@ -341,27 +348,20 @@ class _TradeState extends State<Trade> {
                                               ),
                                             ),
                                           ),
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                              color: Colors.black26,
-                                              borderRadius:
-                                                  BorderRadius.circular(5)),
-                                          height: 40,
-                                          width: 147,
                                         ))
                                   ],
                                 ),
                               )),
                         ),
                         Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 left: 11, right: 11, top: 26, bottom: 26),
                             child: InkWell(
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Ftreats(),
+                                      builder: (context) => const Ftreats(),
                                     ));
                               },
                               child: Container(

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:mainproject/sitter/sitter-login.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import '../../imagepick-tile.dart';
 
 class AddShop extends StatefulWidget {
   @override
@@ -11,6 +13,42 @@ class AddShop extends StatefulWidget {
 }
 
 class _AddShopState extends State<AddShop> {
+  Future<String> uploadImage(File image) async {
+    try {
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      Reference reference =
+      FirebaseStorage.instance.ref().child('images/$fileName');
+      UploadTask uploadTask = reference.putFile(image);
+      TaskSnapshot storageTaskSnapshot = await uploadTask;
+      String downloadUrl = await storageTaskSnapshot.ref.getDownloadURL();
+      return downloadUrl;
+    } catch (e) {
+      print('Error uploading image: $e');
+      return '';
+    }
+  }
+
+  XFile? _imageFile;
+  String? imagePath;
+
+  Future<void> _pickImage(BuildContext context) async {
+    final ImagePicker _picker = ImagePicker();
+    try {
+      XFile? pickedFile =
+      await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        setState(() {
+          _imageFile = pickedFile;
+          imagePath = pickedFile.path;
+        });
+      }
+      print(_imageFile);
+      print('/////////////$imagePath///////////////////');
+    } catch (e) {
+      print("Error picking image: $e");
+    }
+  }
+
   @override
   final GlobalKey<FormState> hospitalAddKey = GlobalKey<FormState>();
   final TextEditingController ShopNameController = TextEditingController();
@@ -21,13 +59,14 @@ class _AddShopState extends State<AddShop> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final CollectionReference admins =
-        FirebaseFirestore.instance.collection('admins');
-    void addShops() {
+    FirebaseFirestore.instance.collection('admins');
+    void addShops(String imageUrl) {
       final hospitalDoc = admins.doc(FirebaseAuth.instance.currentUser!.uid);
       final data = {
         'shopName': ShopNameController.text,
         'shopDetails': ShopDetailsController.text,
-        'shopLocation': ShopLocationController.text
+        'shopLocation': ShopLocationController.text,
+        'shopImage': imageUrl, // Use the imageUrl directly here
       };
       hospitalDoc.collection('Shops').add(data);
     }
@@ -39,9 +78,10 @@ class _AddShopState extends State<AddShop> {
         title: Text(
           'Add Shops',
           style: TextStyle(
-              color: HexColor("7A5600"),
-              fontFamily: 'AbhayaLibre',
-              fontSize: 30),
+            color: HexColor("7A5600"),
+            fontFamily: 'AbhayaLibre',
+            fontSize: 30,
+          ),
         ),
         backgroundColor: HexColor("F2DFB2"),
       ),
@@ -123,9 +163,14 @@ class _AddShopState extends State<AddShop> {
                 const SizedBox(
                   height: 20,
                 ),
-                ListTile(
-                  subtitle: Text("Nothing Selected"),
-                  title: Text('Shops Photo'),
+                ImagePickTile(
+                  onPressed: () {
+                    _pickImage(context);
+                  },
+                  subtitile: _imageFile == null
+                      ? 'Nothing Selected'
+                      : imagePath!,
+                  title: 'Hospital Photo',
                 ),
                 const SizedBox(
                   height: 20,
@@ -171,28 +216,31 @@ class _AddShopState extends State<AddShop> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       overlayColor:
-                          MaterialStateProperty.all(HexColor("F2DFB2")),
+                      MaterialStateProperty.all(HexColor("F2DFB2")),
                       backgroundColor:
-                          MaterialStateProperty.all(HexColor("7A5600")),
+                      MaterialStateProperty.all(HexColor("7A5600")),
                     ),
                     onPressed: () async {
-                      addShops();
-                      Navigator.pop(context);
+                      if (_imageFile != null) {
+                        File imageFile = File(_imageFile!.path);
+                        String imageUrl = await uploadImage(imageFile);
+                        addShops(imageUrl);
+                        Navigator.pop(context);
 
-                      if (hospitalAddKey.currentState!.validate()) {
-                        print("Hospital added successfully!");
-                      } else {
+                        if (hospitalAddKey.currentState!.validate()) {
+                          print("Hospital added successfully!");
+                        } else {
+                          if (ShopNameController.text.isEmpty) {
+                            print("Hospital Name is required!");
+                          }
 
-                        if (ShopNameController.text.isEmpty) {
-                          print("Hospital Name is required!");
-                        }
+                          if (ShopDetailsController.text.isEmpty) {
+                            print("Hospital Details are required!");
+                          }
 
-                        if (ShopDetailsController.text.isEmpty) {
-                          print("Hospital Details are required!");
-                        }
-
-                        if (ShopLocationController.text.isEmpty) {
-                          print("Hospital Location is required!");
+                          if (ShopLocationController.text.isEmpty) {
+                            print("Hospital Location is required!");
+                          }
                         }
                       }
                     },

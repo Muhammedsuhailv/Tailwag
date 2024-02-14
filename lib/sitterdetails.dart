@@ -83,7 +83,7 @@ class _SitterDetailState extends State<SitterDetail> {
                     top: 207,
                     left: 125,
                     child:
-                        CircleAvatar(radius: 55, backgroundImage: widget.img),
+                        CircleAvatar(radius: 55, backgroundImage: NetworkImage(widget.img)),
                   ),
                 ],
               ),

@@ -8,6 +8,7 @@ import 'package:mainproject/care/medicare.dart';
 import 'package:mainproject/care/recorddata.dart';
 import 'package:mainproject/care/recordlist.dart';
 import 'package:mainproject/care/remainderr.dart';
+import 'package:shimmer/shimmer.dart';
 
 class care extends StatefulWidget {
   const care({Key? key}) : super(key: key);
@@ -312,7 +313,7 @@ class _careState extends State<care> {
               child: SizedBox(
                 height: 859,
                 child: StreamBuilder<Object>(
-                    stream: admins.snapshots(),
+                    stream: admins.orderBy('hospitalName').snapshots(),
                     builder: (context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
@@ -325,15 +326,31 @@ class _careState extends State<care> {
                               child: Row(
                                 children: [
                                   Card(
-                                      child: Container(
-                                          height: 100,
-                                          width: 120,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: AssetImage("img/just dogs.jpeg")),
-                                              color: Colors.black12,
-                                              borderRadius: BorderRadius.circular(10)))),
+                                    child: Container(
+                                      height: 100,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black12,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: snapshot.data.docs[index]['imageUrl'] != null
+                                          ? ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          snapshot.data.docs[index]['imageUrl'],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      )
+                                          : Shimmer.fromColors(
+                                        baseColor: Colors.grey[300]!,
+                                        highlightColor: Colors.grey[100]!,
+                                        child: Container(
+                                          color: Colors.white, // Background color of the shimmer effect
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
                                   Column(crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [

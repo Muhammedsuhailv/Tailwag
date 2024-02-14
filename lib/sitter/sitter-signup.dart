@@ -487,6 +487,9 @@ class _SitterSignupState extends State<SitterSignup> {
                               backgroundColor:
                                   MaterialStateProperty.all(HexColor("7A5600")),
                             ),
+                            
+                            
+                            
                             onPressed: () {
                               sitterCtl.uploadImage(_image!);
                               sitterCtl.signUpSitter(
@@ -497,7 +500,7 @@ class _SitterSignupState extends State<SitterSignup> {
                                   email.text,
                                   title.text,
                                   details.text,
-
+                                  _image!, // Pass the image URL
                                   context);
                               if (_formKey.currentState!.validate()) {
                                 // Form is valid, process the data

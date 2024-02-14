@@ -1,34 +1,74 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:mainproject/model/sittermodel.dart';
 import 'package:uuid/uuid.dart';
-import 'dart:io';
+
 import '../bottomnavigationbars.dart';
 
-class SitterCtl{
+class SitterCtl {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   SitterModel? _sitterModel;
 
   SitterModel get sitterModel => _sitterModel!;
-  Future<void> saveSitter(String sitterid, String name, String place,String phone,String email, String title, String details) async {
+
+  Future<void> saveSitter(
+      String sitterid,
+      String name,
+      String place,
+      String phone,
+      String email,
+      String title,
+      String details,
+      String imageUrl, // Add imageUrl parameter
+      ) async {
     final userDoc = firebaseFirestore.collection("sitters").doc(sitterid);
-    _sitterModel = SitterModel(sitterid: sitterid, name: name, place: place, phone: phone, email: email, title: title, details: details);
-    await userDoc.set(_sitterModel!.tomap());
+    _sitterModel = SitterModel(
+      sitterid: sitterid,
+      name: name,
+      place: place,
+      phone: phone,
+      email: email,
+      title: title,
+      details: details,
+      imageUrl: imageUrl, // Assign the provided imageUrl
+    );
+    await userDoc.set(_sitterModel!.toMap());
   }
 
-  Future<void> signUpSitter(String name, String place, String password,String phone, String email, String title,String details,
-      context) async {
+  Future<void> signUpSitter(
+      String name,
+      String place,
+      String password,
+      String phone,
+      String email,
+      String title,
+      String details,
+      File image, // Add image parameter
+      context,
+      ) async {
     try {
       print('/////////////////////sitters SIGNUP//////////////////////');
       UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
       final user = firebaseAuth.currentUser;
       user!.sendEmailVerification();
-      await saveSitter(user!.uid,name, place, phone, email, title, details);
+      String imageUrl = await uploadImage(image); // Upload image first
+      await saveSitter(
+        user.uid,
+        name,
+        place,
+        phone,
+        email,
+        title,
+        details,
+        imageUrl, // Pass the uploaded image URL
+      );
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Its Successfull")));
     } catch (e) {
@@ -36,7 +76,6 @@ class SitterCtl{
       print(e);
     }
   }
-
 
   Future<void> loginSitter(String email, String password, context) async {
     try {
@@ -63,7 +102,8 @@ class SitterCtl{
   Future<String> uploadImage(File image) async {
     try {
       String fileName = DateTime.now().millisecondsSinceEpoch.toString();
-      Reference reference = FirebaseStorage.instance.ref().child('images/$fileName');
+      Reference reference =
+      FirebaseStorage.instance.ref().child('images/$fileName');
       UploadTask uploadTask = reference.putFile(image);
       TaskSnapshot storageTaskSnapshot = await uploadTask;
       String downloadUrl = await storageTaskSnapshot.ref.getDownloadURL();
@@ -72,6 +112,9 @@ class SitterCtl{
       print('Error uploading image: $e');
       return '';
     }
+
   }
+
+
 
 }

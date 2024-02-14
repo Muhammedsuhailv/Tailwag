@@ -3,34 +3,86 @@ import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:mainproject/sitter/sitter-login.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
+import 'dart:io';
+
+import '../../imagepick-tile.dart';
 
 class AddHospital extends StatefulWidget {
-  const AddHospital({super.key});
+  const AddHospital({Key? key});
 
   @override
   State<AddHospital> createState() => _AddHospitalState();
 }
 
 class _AddHospitalState extends State<AddHospital> {
-  @override
+  File? _image;
+  String? imagePath;
+  Future<void> _pickImage(BuildContext context) async {
+    final ImagePicker _picker = ImagePicker();
+    try {
+      final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (pickedImage != null) {
+        setState(() {
+          _image = File(pickedImage.path);
+          imagePath = pickedImage.path;
+        });
+      }
+      print(_image);
+      print('/////////////$imagePath///////////////////');
+    } catch (e) {
+
+      print("Error picking image: $e");
+    }
+  }
   final GlobalKey<FormState> hospitalAddKey = GlobalKey<FormState>();
   final TextEditingController hospitalNameController = TextEditingController();
   final TextEditingController hospitalDetailsController = TextEditingController();
   final TextEditingController hospitalLocationController = TextEditingController();
-  // Add any other controllers as needed.
 
   final CollectionReference admins = FirebaseFirestore.instance.collection('admins');
-  void addHospitail(){
+
+  Map<String, dynamic> data = {};
+
+  void addHospitail() async {
     final hospitalDoc = admins.doc(FirebaseAuth.instance.currentUser!.uid);
-    final data ={
-      'hospitalName' :hospitalNameController.text,
-      'hospitalDetails':hospitalDetailsController.text,
-      'hospitalLocation':hospitalLocationController.text
-    };
+
+    String imageFileName = DateTime.now().millisecondsSinceEpoch.toString();
+
+    // Upload image to Firebase Storage
+    if (_image != null) {
+      firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
+          .ref()
+          .child('hospital_images')
+          .child(imageFileName);
+
+      await ref.putFile(_image!);
+
+      // Get the download URL of the uploaded image
+      String imageUrl = await ref.getDownloadURL();
+
+      // Add hospital data including image URL
+      data = {
+        'hospitalName': hospitalNameController.text,
+        'hospitalDetails': hospitalDetailsController.text,
+        'hospitalLocation': hospitalLocationController.text,
+        'imageUrl': imageUrl, // Add the image URL to data
+      };
+    } else {
+      // If no image is selected, proceed without adding the image URL
+      data = {
+        'hospitalName': hospitalNameController.text,
+        'hospitalDetails': hospitalDetailsController.text,
+        'hospitalLocation': hospitalLocationController.text,
+      };
+    }
+
     hospitalDoc.collection('hospitails').add(data);
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +94,7 @@ class _AddHospitalState extends State<AddHospital> {
         centerTitle: true,
         title: Text(
           'Add Hospital',
-          style: TextStyle(color: HexColor("7A5600"), fontFamily: 'AbhayaLibre',fontSize: 30),
+          style: TextStyle(color: HexColor("7A5600"), fontFamily: 'AbhayaLibre', fontSize: 30),
         ),
         backgroundColor: HexColor("F2DFB2"),
       ),
@@ -108,7 +160,6 @@ class _AddHospitalState extends State<AddHospital> {
                   hintStyle: TextStyle(
                     color: HexColor("7A5600"),
                     fontFamily: 'AbhayaLibre_regular',
-
                     fontWeight: FontWeight.w600,
                   ),
                   hintText: 'Hospital Details',
@@ -123,9 +174,15 @@ class _AddHospitalState extends State<AddHospital> {
               const SizedBox(
                 height: 20,
               ),
-              const ListTile(
-                subtitle: Text("Nothing Selected"),
-                title: Text('Hospital Photo'),
+              ImagePickTile(
+                onPressed: () {
+                  _pickImage(context);
+
+                },
+                subtitile: _image == null
+                    ? 'Nothing Selected'
+                    : imagePath!,
+                title: 'Hospital Photo',
               ),
               const SizedBox(
                 height: 20,
@@ -151,7 +208,6 @@ class _AddHospitalState extends State<AddHospital> {
                   hintStyle: TextStyle(
                     color: HexColor("7A5600"),
                     fontFamily: 'AbhayaLibre_regular',
-
                     fontWeight: FontWeight.w600,
                   ),
                   hintText: 'Hospital Location',
@@ -171,13 +227,14 @@ class _AddHospitalState extends State<AddHospital> {
                 height: 45,
                 child: ElevatedButton(
                   style: ButtonStyle(
-
                     overlayColor: MaterialStateProperty.all(HexColor("F2DFB2")),
                     backgroundColor: MaterialStateProperty.all(HexColor("7A5600")),
                   ),
                   onPressed: () async {
                     addHospitail();
-                    Navigator.pop(context);
+                    Navigator.of(context).pop();
+
+                    
 
                     // Check if the form is valid
                     if (hospitalAddKey.currentState!.validate()) {
@@ -185,9 +242,7 @@ class _AddHospitalState extends State<AddHospital> {
                       // Additional logic for saving hospital photo and clearing fields
                       // Close the add hospital screen
                       print("Hospital added successfully!");
-                      Navigator.pop(context);
                     } else {
-                      Navigator.pop(context);
 
                       // Form is not valid, show error messages for empty fields
                       // You can customize this part to display error messages as needed
@@ -205,6 +260,7 @@ class _AddHospitalState extends State<AddHospital> {
                         // Display error message for Hospital Location
                         print("Hospital Location is required!");
                       }
+
                     }
                   },
                   child: const Text(
@@ -221,4 +277,6 @@ class _AddHospitalState extends State<AddHospital> {
           ),
         ),
       ),
-    );}}
+    );
+  }
+}

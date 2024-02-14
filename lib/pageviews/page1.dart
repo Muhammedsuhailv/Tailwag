@@ -108,7 +108,7 @@ class Page1 extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Page3()),
+              MaterialPageRoute(builder: (context) => Page2()),
             );
           },
           backgroundColor: HexColor("#7A5600"),

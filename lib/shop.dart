@@ -12,6 +12,7 @@ import 'package:mainproject/fish/fishmain.dart';
 import 'package:mainproject/floatingactionbutton/food.dart';
 import 'package:mainproject/floatingactionbutton/foodlist.dart';
 import 'package:mainproject/model.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'widgetmodels/drawer.dart';
 
@@ -544,18 +545,30 @@ class _shopixState extends State<shopix> {
                                 child: Row(
                                   children: [
                                     Card(
-                                        child: Container(
-                                            height: 100,
-                                            width: 120,
-                                            decoration: BoxDecoration(
-                                                image: const DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: AssetImage(
-                                                        "img/just dogs.jpeg")),
-                                                color: Colors.black12,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        10)))),
+                                      child: Container(
+                                        height: 100,
+                                        width: 120,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black12,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: snapshot.data.docs[index]['imageUrl'] != null
+                                            ? ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Image.network(
+                                            snapshot.data!.docs[index]['shopImage'],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                            : Shimmer.fromColors(
+                                          baseColor: Colors.grey[300]!,
+                                          highlightColor: Colors.grey[100]!,
+                                          child: Container(
+                                            color: Colors.white, // Background color of the shimmer effect
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 18.0),
                                       child: Column(
